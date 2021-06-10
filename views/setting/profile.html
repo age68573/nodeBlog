@@ -1,0 +1,56 @@
+{{extend '../_layouts/home.html'}}
+
+{{block 'title'}}{{'nodeBlog - 首頁'}}{{/block}}
+{{block 'head'}}
+<style type="text/css">
+  .form-control{
+    width: 30%;
+    height: 34px;
+  }
+</style>
+{{/block}}
+{{block 'body'}}
+<section class="container">
+  {{include '../_partials/settings-nav.html'}}
+  <div class="container">
+    {{ if user }}
+    <form id="profile_form">
+      <div class="form-group">
+        <label for="">帳號</label>
+        <input type="email" class="form-control" id="" name="email" value="{{user.email}}" disabled="disabled">
+      </div>
+      <div class="form-group">
+        <label for="">暱稱</label>
+        <input type="text" class="form-control" id="" name="nickname" value="{{user.nickname}}">
+      </div>
+      <div class="form-group">
+        <label for="">介绍</label>
+        <textarea class="form-control" rows="3" name="bio" id="">{{user.bio}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="">性别</label>
+        <div>
+          <label class="radio-inline">
+            <input type="radio" name="gender" id="inlineRadio1" value="-1" {{ user.gender==-1?'checked':null }}> 男
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="gender" id="inlineRadio2" value="1" {{ user.gender==1?'checked':null }}> 女
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="gender" id="inlineRadio3" value="0" {{ user.gender==0?'checked':null }} > 保密
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">頭像設置</label>
+        <input id="input-id" type="file" name="avatar">
+      </div>
+      <button type="submit" class="btn btn-success">保存</button>
+    </form>
+    {{ /if }}
+  </div>
+</section>
+{{/block}}
+{{block 'script'}}
+
+{{/block}}

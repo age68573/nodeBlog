@@ -1,0 +1,44 @@
+{{extend '../_layouts/home.html'}}
+
+{{block 'title'}}{{'nodeBlog - 首页'}}{{/block}}
+
+{{block 'body'}}
+<section class="container">
+  {{include '../_partials/settings-nav.html'}}
+  <div class="col-md-5">
+    <div class="subhead">
+      <h2>修改密碼</h2>
+    </div>
+    <hr>
+    <form id="admin_form">
+      <input type="text" id="password" value="{{user.password}}" hidden>
+      <div class="form-group">
+        <label for="">當前密碼</label>
+        <input type="password" class="form-control" id="oldPassword" name="oldPassword">
+      </div>
+      <div class="form-group">
+        <label for="">新的密碼</label>
+        <input type="password" class="form-control" id="newPassword" name="newPassword">
+      </div>
+      <div class="form-group">
+        <label for="">確認密碼</label>
+        <input type="password" class="form-control" id="checkPassword" name="checkPassword">
+        <br>
+        <button type="submit" class="btn btn-success">提交</button>
+        <hr>
+    </form>
+    <div class="subhead">
+      <h2>註銷帳號</h2>
+      <hr>
+    </div>
+    <div>
+      <p>一旦註銷，不可找回，請謹慎操作</p>
+      <button class="btn btn-danger" type="button" id="delete_user">註銷</button>
+    </div>
+    <hr>
+  </div>
+</section>
+{{/block}}
+{{block 'script'}}
+<!-- <script src="../../node_modules/blueimp-md5/js/md5.js"></script> -->
+{{/block}}
