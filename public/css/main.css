@@ -1,4 +1,4 @@
-
+/* 
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.open>a:hover,
 .navbar-default .navbar-nav>.open>a:focus {
@@ -27,4 +27,15 @@
 }
 .btn-group .btn{
   font-size: 12px;
+} */
+
+.centerr {
+  position: absolute;
+    top: 50%;
+}
+
+.aaa {
+  /* position: absolute; */
+  /* display: flex;  */
+  padding-top: 5%;
 }
