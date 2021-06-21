@@ -94,4 +94,11 @@ router.post('/register', (req, res) => {
     // res.redirect('/')
   })
 })
+
+router.get('/logout', (req, res) => {
+  // 1. 清除登入狀態
+  // 2. 重定向到登入頁
+  req.session.user = null
+  res.redirect('/login')
+})
 module.exports = router
