@@ -18,6 +18,12 @@
       <h1>用户註冊</h1>
       <br>
     </div>
+    <!--
+      表單具有默認的提交行為，默認是同步的，同步表單提交，瀏覽器會轉圈等待服務端地響應結果。
+      表單的同步提交後，無論服務端響應甚麼，都會直接把響應的結果覆蓋掉當前頁面
+
+
+    -->
     <form id="register_form">
       <div class="form-group">
         <label for="email">信箱</label>
@@ -52,14 +58,14 @@
         data: formData,
         dataType: 'json',
         success: data => {
-          const err_code = data.err_code
-          if(err_code === 0){
-            window.alert('註冊成功！')
+          var error_code = data.error_code
+          if (error_code === 0) {
+            // window.alert('註冊成功!')
             window.location.href = '/'
-          } else if(err_code === 1){
-            window.alert('信箱已經存在！')
-          } else if(err_code === 500){
-            window.alert("伺服器忙碌，請稍後重試！")
+          } else if (error_code === 1) {
+            window.alert('信箱或暱稱已存在!')
+          } else if (error_code === 500) {
+            window.alert('伺服器忙碌，請稍後重試!')
           }
         }
       })
