@@ -22,12 +22,13 @@ router.post('/login', (req, res) => {
   User.findOne({
     email: body.email,
     password: md5(md5(body.password))
-  }, (err, user) => {
+  }, (err, user, next) => {
     if (err) {
-      return res.status(500).json({
-        error_code: 500,
-        message: err.message
-      })
+      // return res.status(500).json({
+      //   error_code: 500,
+      //   message: err.message
+      // })
+      return next(err)
     }
     if (!user) {
       return res.status(200).json({
@@ -47,7 +48,7 @@ router.post('/login', (req, res) => {
 router.get('/register', (req, res) => {
   res.render('register.html')
 })
-router.post('/register', (req, res) => {
+router.post('/register', (req, res, next) => {
   // 1. 獲取表單的提交數據
   // 2. 操作數據庫
   // 判斷用戶是否存在 (如果已存在不允許註冊，反之)
@@ -66,10 +67,11 @@ router.post('/register', (req, res) => {
     ]
   }, (err, data) => {
     if (err) {
-      return res.status(500).json({
-        error_code: 500,
-        message: 'Internal error.'
-      })
+      // return res.status(500).json({
+      //   error_code: 500,
+      //   message: 'Internal error.'
+      // })
+      return next(err)
     }
     if (data) { // 代表信箱或暱稱已存在
       return res.status(200).json({

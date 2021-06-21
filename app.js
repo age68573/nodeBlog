@@ -30,7 +30,17 @@ app.use(session({
 
 app.use(router) //把路由掛載到app中
 
-
+// 配置一個處理 404 的中間件
+app.use((req, res) => {
+  res.render('404.html')
+})
+// 配置一個全局錯誤處理中間件
+app.use((err, req, res, next) => {
+  res.status(500).json({
+    error_code: 500,
+    message: err.message
+  })
+})
 
 app.listen(3000, () => {
   console.log('server running');
